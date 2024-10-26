@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Faça seu pedido de frutas frescas na La Frutas. Entrega rápida e segura.">
+    <meta name="keywords" content="frutas, delivery, pedido, La Frutas">
+    <meta name="author" content="La Frutas">
+    <title>La Frutas - Faça Seu Pedido</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>La Frutas</h1>
+        <nav>
+            <ul>
+                <li><a href="#formPedido">Faça seu Pedido</a></li>
+                <li><a href="#pedidos">Ver Pedidos</a></li>
+                <li><a href="#feedback">Deixe seu Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Seção do Pedido -->
+        <section class="order-form" id="formPedido">
+            <h2>Faça seu Pedido</h2>
+            <form id="pedidoForm">
+                <label for="clienteNome">Nome do Cliente:</label>
+                <input type="text" id="clienteNome" required aria-label="Nome do Cliente">
+
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" required aria-label="CEP" placeholder="Digite seu CEP" maxlength="8">
+                <span id="cepFeedback" class="feedback"></span>
+
+                <label for="numeroCasa">Número da Casa:</label>
+                <input type="text" id="numeroCasa" required aria-label="Número da Casa">
+
+                <label for="pontoReferencia">Ponto de Referência:</label>
+                <input type="text" id="pontoReferencia" required aria-label="Ponto de Referência">
+
+                <h3 class="fruit-title">Escolha a Quantidade de Frutas:</h3>
+                <div class="fruit-selection">
+                    <div class="fruit-item">
+                        <label for="morango">Morango (R$ 3,00):</label>
+                        <input type="number" id="morango" min="0" value="0" aria-label="Quantidade de Morango">
+                    </div>
+                    <div class="fruit-item">
+                        <label for="limao">Limão (R$ 2,50):</label>
+                        <input type="number" id="limao" min="0" value="0" aria-label="Quantidade de Limão">
+                    </div>
+                    <div class="fruit-item">
+                        <label for="laranja">Laranja (R$ 2,00):</label>
+                        <input type="number" id="laranja" min="0" value="0" aria-label="Quantidade de Laranja">
+                    </div>
+                    <div class="fruit-item">
+                        <label for="melancia">Melancia (R$ 5,00):</label>
+                        <input type="number" id="melancia" min="0" value="0" aria-label="Quantidade de Melancia">
+                    </div>
+                    <div class="fruit-item">
+                        <label for="uva">Uva (R$ 4,00):</label>
+                        <input type="number" id="uva" min="0" value="0" aria-label="Quantidade de Uva">
+                    </div>
+                    <div class="fruit-item">
+                        <label for="carambola">Carambola (R$ 6,00):</label>
+                        <input type="number" id="carambola" min="0" value="0" aria-label="Quantidade de Carambola">
+                    </div>
+                </div>
+
+                <label for="metodoPagamento" class="payment-label">Método de Pagamento:</label>
+                <select id="metodoPagamento" required class="payment-select">
+                    <option value="" disabled selected>Escolha um método</option>
+                    <option value="pix">PIX</option>
+                    <option value="debito">Débito</option>
+                    <option value="credito">Crédito</option>
+                    <option value="dinheiro">Dinheiro</option>
+                </select>
+
+                <label for="dinheiroRecebido">Valor Recebido (apenas se for Dinheiro):</label>
+                <input type="number" id="dinheiroRecebido" aria-label="Valor Recebido" placeholder="Digite o valor recebido" min="0">
+
+                <h3>Valor Total: R$ <span id="valorTotal">0,00</span></h3>
+                <h3>Troco: R$ <span id="troco">0,00</span></h3>
+
+                <label for="detalhesPedido">Detalhes do Pedido:</label>
+                <textarea id="detalhesPedido" placeholder="Adicione detalhes, se necessário..."></textarea>
+
+                <button type="submit">Anotar Pedido</button>
+            </form>
+        </section>
+
+        <!-- Seção de Pedidos -->
+        <section id="pedidos" aria-labelledby="pedidos-heading">
+            <h2 id="pedidos-heading">Pedidos Realizados</h2>
+            <table aria-describedby="lista-pedidos-descricao">
+                <caption id="lista-pedidos-descricao">Tabela com os pedidos realizados pelos clientes, incluindo informações de contato, produtos e valores.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CEP</th>
+                        <th scope="col">Número da Casa</th>
+                        <th scope="col">Ponto de Referência</th>
+                        <th scope="col">Frutas</th>
+                        <th scope="col">Método de Pagamento</th>
+                        <th scope="col">Detalhes</th>
+                        <th scope="col">Valor Total</th>
+                        <th scope="col">Troco</th>
+                    </tr>
+                </thead>
+                <tbody id="listaPedidos">
+                    <tr>
+                        <td data-label="Nome"></td>
+                        <td data-label="CEP"></td>
+                        <td data-label="Número da Casa"></td>
+                        <td data-label="Ponto de Referência"></td>
+                        <td data-label="Frutas"></td>
+                        <td data-label="Método de Pagamento"></td>
+                        <td data-label="Detalhes"></td>
+                        <td data-label="Valor Total"></td>
+                        <td data-label="Troco"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Seção de Feedback -->
+        <section id="feedback">
+            <h2>Deixe seu Feedback</h2>
+            <form id="formFeedback">
+                <label for="feedbackNome">Seu Nome:</label>
+                <input type="text" id="feedbackNome" required>
+                <label for="feedbackComentario">Comentário:</label>
+                <textarea id="feedbackComentario" required></textarea>
+                <button type="submit">Enviar Feedback</button>
+            </form>
+            <div id="feedbackList"></div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="contato" aria-labelledby="contato-heading">
+            <h2 id="contato-heading">Contato via WhatsApp</h2>
+            <p>Se você tiver alguma dúvida ou precisar de ajuda, entre em contato conosco pelo WhatsApp!</p>
+            <a href="https://api.whatsapp.com/send?phone=5511939005147" target="_blank" class="whatsapp-button" aria-label="Fale conosco pelo WhatsApp">Fale Conosco</a>
+        </section>
+    </main>
+
+    <footer style="background-color: #FF5722; color: white; padding: 20px; text-align: center; position: relative;">
+        <div style="position: relative; z-index: 2;">
+            <p style="font-size: 1.5em; margin: 0;">&copy; 2024 <span class="footer-highlight" style="font-weight: bold; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);">La Frutas</span>. Todos os direitos reservados.</p>
+            <div style="margin-top: 10px;">
+                <a href="#" style="color: white; text-decoration: none; margin: 0 10px; transition: color 0.3s;" aria-label="Siga-nos no Instagram">Instagram</a>
+                <a href="#" style="color: white; text-decoration: none; margin: 0 10px; transition: color 0.3s;" aria-label="Curta nossa página no Facebook">Facebook</a>
+                <a href="#" style="color: white; text-decoration: none; margin: 0 10px; transition: color 0.3s;" aria-label="Nos siga no Twitter">Twitter</a>
+            </div>
+        </div>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: flex; justify-content: center; align-items: center; opacity: 0.1; pointer-events: none;">
+            <span style="font-size: 10em; font-family: 'Pacifico', cursive; color: #ff8c00; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">La Frutas</span>
+        </div>
+    </footer>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
