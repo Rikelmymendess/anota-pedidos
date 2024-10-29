@@ -408,26 +408,6 @@ footer {
     color: #666;
     margin-bottom: 20px;
 }
-
-/* Estilo para o Botão do WhatsApp */
-.whatsapp-button {
-    display: inline-block;
-    padding: 5px 10px; /* Diminuído pela metade */
-    background-color: #25D366;
-    color: #fff;
-    font-weight: bold;
-    border: none;
-    border-radius: 2.5px; /* Diminuído pela metade */
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.whatsapp-button:hover {
-    background-color: #128C7E;
-    transform: translateY(-2px);
-}
-
-
 #loginSection {
     margin-top: 50px;
 }
