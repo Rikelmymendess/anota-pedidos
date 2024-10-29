@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const camposObrigatorios = [
             'clienteNome', 
             'cep', 
+            'nomeRua', 
             'numeroCasa', 
             'pontoReferencia', 
             'metodoPagamento'
@@ -80,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
         novoPedido.innerHTML = `
             <td>${document.getElementById('clienteNome').value}</td>
             <td>${document.getElementById('cep').value}</td>
+            <td>${document.getElementById('nomeRua').value}</td>
             <td>${document.getElementById('numeroCasa').value}</td>
             <td>${document.getElementById('pontoReferencia').value}</td>
             <td>${frutasSelecionadas}</td>
@@ -121,4 +123,34 @@ document.addEventListener('DOMContentLoaded', function () {
         formFeedback.reset();
         alert("Feedback enviado com sucesso!");
     });
+
+    // Função para buscar o endereço pelo CEP
+    document.getElementById('cep').addEventListener('blur', buscarEndereco);
+
+    function buscarEndereco() {
+        const cep = document.getElementById('cep').value;
+        const cepFeedback = document.getElementById('cepFeedback');
+        const nomeRua = document.getElementById('nomeRua'); // Corrigido para usar o id correto
+
+        if (cep.length === 8) {
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        nomeRua.value = data.logradouro || 'Rua não encontrada';
+                        cepFeedback.textContent = '';
+                    } else {
+                        cepFeedback.textContent = 'CEP não encontrado';
+                        nomeRua.value = '';
+                    }
+                })
+                .catch(error => {
+                    cepFeedback.textContent = 'Erro ao buscar endereço';
+                    console.error('Erro:', error);
+                });
+        } else {
+            nomeRua.value = '';
+            cepFeedback.textContent = '';
+        }
+    }
 });
