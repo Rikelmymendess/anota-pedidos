@@ -8,6 +8,7 @@
     <meta name="author" content="La Frutas">
     <title>La Frutas - Faça Seu Pedido</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicoin-lafrutas.ico.jpeg" type="images/x-icon">
 </head>
 <body>
     <header>
@@ -32,6 +33,9 @@
                 <label for="cep">CEP:</label>
                 <input type="text" id="cep" required aria-label="CEP" placeholder="Digite seu CEP" maxlength="8">
                 <span id="cepFeedback" class="feedback"></span>
+
+                <label for="nomeRua">Nome Da Rua:</label>
+                <input type="text" id="nomeRua" required aria-label="Nome Da Rua">
 
                 <label for="numeroCasa">Número da Casa:</label>
                 <input type="text" id="numeroCasa" required aria-label="Número da Casa">
@@ -98,6 +102,7 @@
                     <tr>
                         <th scope="col">Nome</th>
                         <th scope="col">CEP</th>
+                        <th scope="col">Nome Da Rua</th>
                         <th scope="col">Número da Casa</th>
                         <th scope="col">Ponto de Referência</th>
                         <th scope="col">Frutas</th>
@@ -111,6 +116,7 @@
                     <tr>
                         <td data-label="Nome"></td>
                         <td data-label="CEP"></td>
+                        <td data-label="Nome da Rua"></td>
                         <td data-label="Número da Casa"></td>
                         <td data-label="Ponto de Referência"></td>
                         <td data-label="Frutas"></td>
@@ -150,14 +156,10 @@
             <div style="margin-top: 10px;">
                 <a href="#" style="color: white; text-decoration: none; margin: 0 10px; transition: color 0.3s;" aria-label="Siga-nos no Instagram">Instagram</a>
                 <a href="#" style="color: white; text-decoration: none; margin: 0 10px; transition: color 0.3s;" aria-label="Curta nossa página no Facebook">Facebook</a>
-                <a href="#" style="color: white; text-decoration: none; margin: 0 10px; transition: color 0.3s;" aria-label="Nos siga no Twitter">Twitter</a>
+                <a href="#" style="color: white; text-decoration: none; margin: 0 10px; transition: color 0.3s;" aria-label="Contato">Contato</a>
             </div>
         </div>
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: flex; justify-content: center; align-items: center; opacity: 0.1; pointer-events: none;">
-            <span style="font-size: 10em; font-family: 'Pacifico', cursive; color: #ff8c00; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">La Frutas</span>
-        </div>
     </footer>
-    
 
     <script src="script.js"></script>
 </body>
